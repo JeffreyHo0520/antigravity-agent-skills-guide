@@ -34,6 +34,7 @@ These tools automate spreadsheet operations, mechanical drawing parsing, and dis
 *   **[excel-work-hour-migrator](file:///C:/Users/User/.gemini/config/skills/excel-work-hour-migrator/SKILL.md)**: Shifts monthly work hour statistic sheets to the next month, resetting daily cells and adjusting sum formulas.
 *   **[excel-workhour-sync](file:///C:/Users/User/.gemini/config/skills/excel-workhour-sync/SKILL.md)**: Synchronizes work hours across monthly files, clearing retired entries and repairing broken formulas.
 *   **[excel-defect-tracker-updater](file:///C:/Users/User/.gemini/config/skills/excel-defect-tracker-updater/SKILL.md)**: Clears and populates QA defect tracking Excel sheets. Automatically analyzes defect photos, determines correct orientation, resizes images to fit cell heights, copies formatting styles, and fills finding details.
+*   **[process-fmea-generator](file:///C:/Users/User/.gemini/config/skills/process-fmea-generator/SKILL.md)**: Parses SOP Word docs and PQP Excel workbooks, matching assembly/inspection steps and populating Process FMEA (PFMEA) sheets with SEV, OCC, DET, and RPN formulas.
 
 ---
 
@@ -106,6 +107,7 @@ These tools download transcripts, clone voices, and generate visual artwork.
 
 These scripts manage credentials, run environmental CLI diagnostics, or packages workflows.
 
+*   **[antigravity-guide](file:///C:/Users/User/.gemini/antigravity/builtin/skills/antigravity_guide/SKILL.md)**: Provides a comprehensive guide, sitemap, CLI reference (`agy`), IDE reference, desktop app 2.0 specs, and Python SDK documentation for Google Antigravity.
 *   **[android-cli](file:///C:/Users/User/.gemini/config/plugins/android-cli-plugin/skills/SKILL.md)**: Runs Android SDK diagnostics, configures emulation, and deploys builds.
 *   **[uv](file:///C:/Users/User/.gemini/config/plugins/science/skills/uv/SKILL.md)**: Verifies or installs the high-performance Python package installer `uv`.
 *   **[credentials](file:///C:/Users/User/.gemini/config/plugins/science/skills/credentials/SKILL.md)**: Safe credential handling procedures to check for API keys.

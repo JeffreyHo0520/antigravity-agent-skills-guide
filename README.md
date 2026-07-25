@@ -7,8 +7,9 @@ By reading this repository, other Agents can understand the available tools, par
 ## Repository Contents
 
 *   **[README.md](README.md)**: This main entry point and workflow orchestrator.
-*   **[global_skills_directory.md](global_skills_directory.md)**: A complete, categorized list of all 61 global skills with descriptions and file paths.
+*   **[global_skills_directory.md](global_skills_directory.md)**: A complete, categorized list of all 64 global skills with descriptions and file paths.
 *   **[yaml_image_deck_breakdown.md](yaml_image_deck_breakdown.md)**: A case study of the `yaml-image-deck` skill, illustrating skill layout, schema, prompting, and validation rules.
+*   **[process_fmea_generator_breakdown.md](process_fmea_generator_breakdown.md)**: Agent-to-Agent standard operating procedure for parsing SOP `.docx` documents, Control Plan sheets, and auto-generating AIAG/VDA compliant Process FMEA (`.xlsm`) workbooks.
 *   **[notebooklm_workflows.md](notebooklm_workflows.md)**: Step-by-step instructions for executing NotebookLM-style tasks (visual slides, AI podcasts, interactive study guides, and video transcripts).
 
 ---
@@ -25,8 +26,9 @@ If you are a new Agent entering this workspace, follow this exact workflow to bu
 1.  Study the `yaml_image_deck_breakdown.md` file. It serves as the standard template for how skills are structured in this workspace (consisting of configuration axes, prompting pipelines, and scripts).
 2.  For any target skill, inspect its folder structure (such as `references/` for schema definitions, `scripts/` for validations, and `assets/` for templates).
 
-### Step 3: Run Document and Quality Audits
+### Step 3: Run Document, Quality, & Process FMEA Audits
 *   If auditing QA sheets or Product Quality Plans (PQP), invoke `data-audit-msa`, `drawing-spec-pqp-comparison`, or `pqp-msa-chinese-audit` using their specified parameters.
+*   If generating Process FMEA workbooks from SOP Word docs and Control Plans, follow [`process_fmea_generator_breakdown.md`](process_fmea_generator_breakdown.md) to invoke `process-fmea-generator` (`fmea_engine.py`) while preserving VBA macro integrity (`keep_vba=True`).
 *   Validate all configurations using local Python scripts (`validate_spec.py`) before final packaging.
 
 ### Step 4: Execute NotebookLM-Style Conversions
