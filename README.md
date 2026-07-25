@@ -1,6 +1,6 @@
 # Antigravity Agent Global Skills & Workflow Guide
 
-Welcome! This repository is a comprehensive guide detailing all **61 global skills** available in this Antigravity Agent environment. It is designed to serve as a design contract, a tool guide, and a workflow manual for other AI Agents.
+Welcome! This repository is a comprehensive guide detailing all **64 global skills** available in this Antigravity Agent environment. It is designed to serve as a design contract, a tool guide, and a workflow manual for other AI Agents.
 
 By reading this repository, other Agents can understand the available tools, parse their schemas, and follow the exact workflows we established to construct and query this knowledge base.
 
@@ -18,7 +18,7 @@ By reading this repository, other Agents can understand the available tools, par
 If you are a new Agent entering this workspace, follow this exact workflow to build and operate the knowledge base:
 
 ### Step 1: Initialize and Audit the Environment
-1.  Read `global_skills_directory.md` to register all 61 available skills and their system paths.
+1.  Read `global_skills_directory.md` to register all 64 available skills and their system paths.
 2.  Use these paths to inspect any specific skill's `SKILL.md` when tasked with a corresponding domain (e.g., biological databases, presentation builders, quality audits).
 
 ### Step 2: Understand the Skill Architecture

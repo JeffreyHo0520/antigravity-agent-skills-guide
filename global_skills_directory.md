@@ -1,6 +1,6 @@
 # Global Agent Skills Directory
 
-This directory registers all **61 global skills** available in this Antigravity Agent environment. They are organized by functional domain to help other Agents identify the appropriate tool for a task.
+This directory registers all **64 global skills** available in this Antigravity Agent environment. They are organized by functional domain to help other Agents identify the appropriate tool for a task.
 
 ---
 
@@ -33,6 +33,7 @@ These tools automate spreadsheet operations, mechanical drawing parsing, and dis
 *   **[pqp-drawing-balloon-updater](file:///C:/Users/User/.gemini/config/skills/pqp-drawing-balloon-updater/SKILL.md)**: Overlays movable and editable balloon shape indicators at inspected locations in Excel PQP sheets.
 *   **[excel-work-hour-migrator](file:///C:/Users/User/.gemini/config/skills/excel-work-hour-migrator/SKILL.md)**: Shifts monthly work hour statistic sheets to the next month, resetting daily cells and adjusting sum formulas.
 *   **[excel-workhour-sync](file:///C:/Users/User/.gemini/config/skills/excel-workhour-sync/SKILL.md)**: Synchronizes work hours across monthly files, clearing retired entries and repairing broken formulas.
+*   **[excel-defect-tracker-updater](file:///C:/Users/User/.gemini/config/skills/excel-defect-tracker-updater/SKILL.md)**: Clears and populates QA defect tracking Excel sheets. Automatically analyzes defect photos, determines correct orientation, resizes images to fit cell heights, copies formatting styles, and fills finding details.
 
 ---
 
@@ -97,6 +98,7 @@ These tools download transcripts, clone voices, and generate visual artwork.
 *   **[voxcpm2-voice-cloner](file:///C:/Users/User/.gemini/config/skills/voxcpm2-voice-cloner/SKILL.md)**: Custom voice cloning, conversation scenario script generation, and recording manager (optimized for low RAM).
 *   **[video-audio-downloader](file:///C:/Users/User/.gemini/config/skills/video-audio-downloader/SKILL.md)**: Downloads YouTube subtitles (preferring Traditional Chinese `zh-TW`) and reformats them into structured, readable paragraphs in Markdown.
 *   **[draw-free](file:///C:/Users/User/.gemini/config/skills/draw-free/SKILL.md)**: Free AI image generator using Pollinations.ai (requires no API keys or local GPU).
+*   **[viral-thumbnail-designer](file:///C:/Users/User/.gemini/config/skills/viral-thumbnail-designer/SKILL.md)**: Analyzes video subtitle text and character photos to design high-click-through-rate (CTR) YouTube thumbnail drafts and layouts.
 
 ---
 
@@ -109,4 +111,6 @@ These scripts manage credentials, run environmental CLI diagnostics, or packages
 *   **[credentials](file:///C:/Users/User/.gemini/config/plugins/science/skills/credentials/SKILL.md)**: Safe credential handling procedures to check for API keys.
 *   **[workflow-skill-creator](file:///C:/Users/User/.gemini/config/plugins/science/skills/workflow_skill_creator/SKILL.md)**: Distills a completed multi-step chat interaction or workflow into a reusable Antigravity skill template.
 *   **[predictingthepast](file:///C:/Users/User/.gemini/config/plugins/science/skills/predictingthepast/SKILL.md)**: Implements Aeneas (Latin) and Ithaca (Ancient Greek) models to restore, date, and attribute ancient epigraphic texts.
+*   **[google-sheets-drink-order-app-builder](file:///C:/Users/User/.gemini/config/skills/google-sheets-drink-order-app-builder/SKILL.md)**: Parses menu images/data, builds a responsive web app drink order system, and generates Google Apps Script (GAS) code to sync orders with Google Sheets.
+*   **[google-sheets-form-order-builder](file:///C:/Users/User/.gemini/config/skills/google-sheets-form-order-builder/SKILL.md)**: Uses Google Apps Script (GAS) to automatically build a Google Form for order entry and syncs responses back to a Google Sheet.
 *   **[science-skills-common](file:///C:/Users/User/.gemini/config/plugins/science/skills/science_skills_common/SKILL.md)** (and **[scienceskillscommon](file:///C:/Users/User/.gemini/config/plugins/science/skills/scienceskillscommon/SKILL.md)**): The shared HTTP library with rate limits and exponential backoffs. (Internal module, do not invoke directly).
