@@ -371,6 +371,7 @@
             <button class="tab-header-btn active" onclick="switchTab('notebooklm')">NotebookLM Workflows</button>
             <button class="tab-header-btn" onclick="switchTab('yaml')">Yaml Image Deck SOP</button>
             <button class="tab-header-btn" onclick="switchTab('audit')">Quality Audit Standard</button>
+            <button class="tab-header-btn" onclick="switchTab('pfmea')">Process FMEA Generator SOP</button>
         </div>
 
         <div id="notebooklm" class="tab-panel active">
@@ -407,6 +408,23 @@
                 <li><code>data-audit-msa</code>: Audits Gage R&R ANOVA metrics (% Contribution, Study Var, Distinct Categories).</li>
                 <li><code>engineering-doc-diff-ppt</code>: Side-by-side visual discrepancy report generator.</li>
             </ul>
+        </div>
+
+        <div id="pfmea" class="tab-panel">
+            <h3>Process FMEA Generator Workflow (`process-fmea-generator`)</h3>
+            <p>Automates extraction from SOP Word documents (`.docx`) and Control Plan sheets (`.xlsm`) into AIAG/VDA compliant Process FMEA rows:</p>
+            <div class="workflow-step">
+                <h4>1. Macro Preservation</h4>
+                <p>Always load workbooks with <code>keep_vba=True</code> to preserve embedded VBA macros in <code>.xlsm</code> files.</p>
+            </div>
+            <div class="workflow-step">
+                <h4>2. Merged Cell Targeting</h4>
+                <p>In OpenPyXL, write formatted text directly to top-left cells: <code>Col A</code> (Step), <code>Col G</code> (Failure Mode), <code>Col M</code> (Effect), <code>Col S</code> (SEV), <code>Col T</code> (Causes), <code>Col Z</code> (OCC), <code>Col AA</code> (Controls), <code>Col AG</code> (DET).</p>
+            </div>
+            <div class="workflow-step">
+                <h4>3. RPN Formula Injection</h4>
+                <p>Inject dynamic Excel formulas: <code>Col AH</code> = <code>=IF(ISBLANK(S{row})," ",S{row}*Z{row}*AG{row})</code>.</p>
+            </div>
         </div>
     </section>
 </main>
