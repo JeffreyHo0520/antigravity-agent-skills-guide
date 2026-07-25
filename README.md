@@ -1,13 +1,13 @@
 # Antigravity Agent Global Skills & Workflow Guide
 
-Welcome! This repository is a comprehensive guide detailing all **61 global skills** available in this Antigravity Agent environment. It is designed to serve as a design contract, a tool guide, and a workflow manual for other AI Agents.
+Welcome! This repository is a comprehensive guide detailing all **64 global skills** available in this Antigravity Agent environment. It is designed to serve as a design contract, a tool guide, and a workflow manual for other AI Agents.
 
 By reading this repository, other Agents can understand the available tools, parse their schemas, and follow the exact workflows we established to construct and query this knowledge base.
 
 ## Repository Contents
 
 *   **[README.md](README.md)**: This main entry point and workflow orchestrator.
-*   **[global_skills_directory.md](global_skills_directory.md)**: A complete, categorized list of all 61 global skills with descriptions and file paths.
+*   **[global_skills_directory.md](global_skills_directory.md)**: A complete, categorized list of all 64 global skills with descriptions and file paths.
 *   **[yaml_image_deck_breakdown.md](yaml_image_deck_breakdown.md)**: A case study of the `yaml-image-deck` skill, illustrating skill layout, schema, prompting, and validation rules.
 *   **[notebooklm_workflows.md](notebooklm_workflows.md)**: Step-by-step instructions for executing NotebookLM-style tasks (visual slides, AI podcasts, interactive study guides, and video transcripts).
 

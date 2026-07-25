@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Antigravity - Interactive Agent Skills & Workflow Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: rgba(30, 41, 59, 0.7);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --accent-blue: #38bdf8;
+            --accent-purple: #818cf8;
+            --accent-emerald: #34d399;
+            --accent-amber: #fbbf24;
+            --accent-rose: #f43f5e;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --glass-bg: rgba(15, 23, 42, 0.8);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding-bottom: 60px;
+        }
+
+        header {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.9) 100%);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 20px 40px;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 20px;
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(56, 189, 248, 0.4);
+        }
+
+        .logo-title h1 {
+            font-size: 22px;
+            font-weight: 700;
+            background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo-title p {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .stats-badge {
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            color: var(--accent-blue);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        main {
+            max-width: 1400px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        /* Controls Section */
+        .controls-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(8px);
+        }
+
+        .search-bar-container {
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 14px 20px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 15px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+        }
+
+        .category-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .filter-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            color: #fff;
+            border-color: transparent;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
+        }
+
+        /* Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        .skill-card:hover::before {
+            opacity: 1;
+        }
+
+        .card-header {
+            margin-bottom: 12px;
+        }
+
+        .card-category {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            font-weight: 700;
+            color: var(--accent-blue);
+            margin-bottom: 6px;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            word-break: break-word;
+        }
+
+        .card-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
+
+        .card-path {
+            font-family: 'Fira Code', monospace;
+            font-size: 11px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 8px 12px;
+            border-radius: 6px;
+            color: #cbd5e1;
+            word-break: break-all;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .copy-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 10px;
+            transition: background 0.2s;
+        }
+
+        .copy-btn:hover {
+            background: var(--accent-blue);
+        }
+
+        /* Tabs Section */
+        .tabs-container {
+            margin-top: 50px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .tab-headers {
+            display: flex;
+            gap: 15px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+        }
+
+        .tab-header-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .tab-header-btn.active {
+            color: var(--accent-blue);
+            background: rgba(56, 189, 248, 0.1);
+        }
+
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        .workflow-step {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 14px;
+        }
+
+        .workflow-step h4 {
+            color: var(--accent-emerald);
+            margin-bottom: 6px;
+        }
+
+        code {
+            font-family: 'Fira Code', monospace;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: var(--accent-amber);
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <div class="logo-group">
+            <div class="logo-icon">AG</div>
+            <div class="logo-title">
+                <h1>Antigravity Agent Skills Directory</h1>
+                <p>Interactive Knowledge & Tools Guide</p>
+            </div>
+        </div>
+        <div class="stats-badge">
+            <span id="skill-count">64</span> Global Skills Registered
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="controls-section">
+        <div class="search-bar-container">
+            <input type="text" id="search-input" class="search-input" placeholder="Search by skill name, description, or keyword (e.g., pdf, audit, excel, audio, fasta)...">
+        </div>
+        <div class="category-filters" id="category-filters">
+            <button class="filter-btn active" data-category="all">All Skills (64)</button>
+            <button class="filter-btn" data-category="presentation">Presentation & Design</button>
+            <button class="filter-btn" data-category="quality">Quality & Engineering Audit</button>
+            <button class="filter-btn" data-category="bio">Bioinformatics & Genomics</button>
+            <button class="filter-btn" data-category="literature">Literature Search</button>
+            <button class="filter-btn" data-category="media">Voice & Media</button>
+            <button class="filter-btn" data-category="system">System & Utilities</button>
+        </div>
+    </section>
+
+    <section class="skills-grid" id="skills-grid"></section>
+
+    <section class="tabs-container">
+        <div class="tab-headers">
+            <button class="tab-header-btn active" onclick="switchTab('notebooklm')">NotebookLM Workflows</button>
+            <button class="tab-header-btn" onclick="switchTab('yaml')">Yaml Image Deck SOP</button>
+            <button class="tab-header-btn" onclick="switchTab('audit')">Quality Audit Standard</button>
+        </div>
+
+        <div id="notebooklm" class="tab-panel active">
+            <h3>NotebookLM Multimodal Conversions</h3>
+            <div class="workflow-step">
+                <h4>Step 1: Visual Presentation Deck</h4>
+                <p>Use <code>yaml-image-deck</code> or <code>soil-teaching-deck</code> to outline presentation concepts, generate full-bleed imagery via <code>gpt-image-2</code>, and package into PPTX or HTML format.</p>
+            </div>
+            <div class="workflow-step">
+                <h4>Step 2: AI Cloned Podcast / Dialogue</h4>
+                <p>Utilize <code>voxcpm2-voice-cloner</code> and <code>use-ho-cloned_voice</code> to generate multi-speaker dialog audio scripts using local VoxCPM2 model optimization.</p>
+            </div>
+            <div class="workflow-step">
+                <h4>Step 3: Interactive Practice Book</h4>
+                <p>Invoke <code>interactive-practice-book-generator</code> on exam or specification PDFs to extract LaTeX equations and build hidden-answer study interfaces.</p>
+            </div>
+        </div>
+
+        <div id="yaml" class="tab-panel">
+            <h3>YAML Image Deck Breakdown</h3>
+            <p>The <code>yaml-image-deck</code> skill compiles structured YAML representations into consistent visual slides using style locking:</p>
+            <ul>
+                <li><strong>Design System:</strong> Enforces color tokens, typography scales, and aspect ratios.</li>
+                <li><strong>Layout Engine:</strong> Pre-calculated bounding boxes prevent dynamic offset overlap.</li>
+                <li><strong>Validation:</strong> Runs <code>validate_spec.py</code> before rendering images.</li>
+            </ul>
+        </div>
+
+        <div id="audit" class="tab-panel">
+            <h3>Quality Management & Engineering Audit</h3>
+            <p>Automated QA auditing skills compare Product Quality Plans (PQP) against engineering PDFs:</p>
+            <ul>
+                <li><code>drawing-spec-pqp-comparison</code>: Checks torques, drawing revisions, and CTQ tolerances against PDF layers.</li>
+                <li><code>data-audit-msa</code>: Audits Gage R&R ANOVA metrics (% Contribution, Study Var, Distinct Categories).</li>
+                <li><code>engineering-doc-diff-ppt</code>: Side-by-side visual discrepancy report generator.</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<script>
+const skillsData = [
+    // Presentation
+    { name: "soil-teaching-deck", category: "presentation", desc: "Based on Prof. Li Chun-yi's SOIL Teaching Deck Workflow (6 engines), analyzes cognitive load, outlines presentation structure, and edits pedagogical slide decks.", path: "plugins/soil-presentation-skills/skills/soil-teaching-deck/SKILL.md" },
+    { name: "soil-html-deck", category: "presentation", desc: "Generates highly responsive, interactive HTML presentations featuring Chart.js charts, embedded video, and custom animations.", path: "plugins/soil-presentation-skills/skills/soil-html-deck/SKILL.md" },
+    { name: "soil-image-deck", category: "presentation", desc: "Uses gpt-image-2 to generate full-slide imagery and packages them into full-bleed PowerPoint decks.", path: "plugins/soil-presentation-skills/skills/soil-image-deck/SKILL.md" },
+    { name: "yaml-image-deck", category: "presentation", desc: "Compiles structured YAML content into consistent, visual-first slide decks with style locking.", path: "skills/yaml-image-deck/SKILL.md" },
+    { name: "yaml-assa-abloy-pptx-generator", category: "presentation", desc: "Uses ASSA ABLOY brand template and YAML style rules to generate corporate presentation decks.", path: "plugins/soil-presentation-skills/skills/yaml-assa-abloy-pptx-generator/SKILL.md" },
+    { name: "engineering-pptx-builder", category: "presentation", desc: "Automatically builds English/Traditional Chinese bilingual engineering/QA-themed slides.", path: "skills/engineering-pptx-builder/SKILL.md" },
+    { name: "digital-business-card-builder", category: "presentation", desc: "Creates self-contained single-page responsive HTML business cards with embedded assets.", path: "skills/digital-business-card-builder/SKILL.md" },
+    { name: "interactive-practice-book-generator", category: "presentation", desc: "Translates exam PDFs into interactive study books with hidden answers and LaTeX formula support.", path: "plugins/science/skills/interactive-practice-book-generator/SKILL.md" },
+
+    // Quality Audit
+    { name: "data-audit-msa", category: "quality", desc: "Validates metadata integrity and audits Gage R&R metrics in MSA and PQP sheets.", path: "plugins/science/skills/data-audit-msa/SKILL.md" },
+    { name: "pqp-msa-chinese-audit", category: "quality", desc: "Scans files and auto-generates Traditional Chinese audit markdown reports for MSA/PQP files.", path: "skills/pqp-msa-chinese-audit/SKILL.md" },
+    { name: "drawing-spec-pqp-comparison", category: "quality", desc: "Audits PQP sheets against mechanical drawing PDFs (TLA/Subassemblies), checking dimensions, torques, and capabilities.", path: "plugins/science/skills/drawing-spec-pqp-comparison/SKILL.md" },
+    { name: "pcb-pqp-spec-comparison", category: "quality", desc: "Compares PCB specs, PQP sheets, and QA inspection reports for compliance (dimensions, solder mask thickness, revisions).", path: "plugins/science/skills/pcb_pqp_spec_comparison/SKILL.md" },
+    { name: "engineering-doc-diff-ppt", category: "quality", desc: "Performs side-by-side discrepancy comparisons between spec PDFs and supplier drawings, exporting a PowerPoint diff report.", path: "skills/engineering-doc-diff-ppt/SKILL.md" },
+    { name: "excel-grr-generator", category: "quality", desc: "Scans dimensional sheets, identifies critical-to-quality (CTQ) dimensions, and populates ANOVA Gage R&R sheets.", path: "skills/excel-grr-generator/SKILL.md" },
+    { name: "fai-report-generator", category: "quality", desc: "Parses drawings, extracts specifications, and populates First Article Inspection (FAI) reports with simulated normal distribution values.", path: "skills/fai-report-generator/SKILL.md" },
+    { name: "pqp-drawing-balloon-updater", category: "quality", desc: "Overlays movable and editable balloon shape indicators at inspected locations in Excel PQP sheets.", path: "skills/pqp-drawing-balloon-updater/SKILL.md" },
+    { name: "excel-work-hour-migrator", category: "quality", desc: "Shifts monthly work hour statistic sheets to the next month, resetting daily cells and adjusting sum formulas.", path: "skills/excel-work-hour-migrator/SKILL.md" },
+    { name: "excel-workhour-sync", category: "quality", desc: "Synchronizes work hours across monthly files, clearing retired entries and repairing broken formulas.", path: "skills/excel-workhour-sync/SKILL.md" },
+    { name: "excel-defect-tracker-updater", category: "quality", desc: "Clears and populates QA defect tracking Excel sheets, auto-orienting and embedding defect photos.", path: "skills/excel-defect-tracker-updater/SKILL.md" },
+    { name: "process-fmea-generator", category: "quality", desc: "Parses SOP Word docs and PQP Excel workbooks, matching assembly/inspection steps and populating PFMEA sheets.", path: "skills/process-fmea-generator/SKILL.md" },
+
+    // Bioinformatics & Genomics
+    { name: "alphafold-database-fetch-and-analyze", category: "bio", desc: "Retrieves AlphaFold structures by UniProt ID, analyzing structural confidence (pLDDT) and disorder.", path: "plugins/science/skills/alphafold_database_fetch_and_analyze/SKILL.md" },
+    { name: "alphagenome-single-variant-analysis", category: "bio", desc: "Evaluates genetic variant effects on gene expression, chromatin accessibility (DNASE), and transcription factors.", path: "plugins/science/skills/alphagenome_single_variant_analysis/SKILL.md" },
+    { name: "chembl-database", category: "bio", desc: "Queries ChEMBL database for bioactive molecules, drug targets, bioactivities, and IC50/Ki values.", path: "plugins/science/skills/chembl_database/SKILL.md" },
+    { name: "clinical-trials-database", category: "bio", desc: "Resolves NCT IDs, fetches trial enrollment eligibility, and lists sponsor portfolios.", path: "plugins/science/skills/clinical_trials_database/SKILL.md" },
+    { name: "clinvar-database", category: "bio", desc: "Looks up human genetic variant clinical significance (Pathogenic, Benign, VUS).", path: "plugins/science/skills/clinvar_database/SKILL.md" },
+    { name: "dbsnp-database", category: "bio", desc: "Maps single nucleotide polymorphisms (SNPs) between rsIDs, VCF coordinates, and HGVS nomenclature.", path: "plugins/science/skills/dbsnp_database/SKILL.md" },
+    { name: "embl-ebi-ols", category: "bio", desc: "Queries biomedical ontology terms, definitions, and hierarchies across 250+ ontologies.", path: "plugins/science/skills/embl_ebi_ols/SKILL.md" },
+    { name: "encode-ccres-database", category: "bio", desc: "Queries ENCODE Registry of cis-Regulatory Elements (cCREs) and raw peak files.", path: "plugins/science/skills/encode_ccres_database/SKILL.md" },
+    { name: "ensembl-database", category: "bio", desc: "Resolves gene/transcript/protein coordinates and predicts variant consequences (VEP).", path: "plugins/science/skills/ensembl_database/SKILL.md" },
+    { name: "foldseek-structural-search", category: "bio", desc: "Performs 3D protein structure searches using Foldseek API on .pdb/.cif coordinate files.", path: "plugins/science/skills/foldseek_structural_search/SKILL.md" },
+    { name: "gnomad-database", category: "bio", desc: "Evaluates allele frequencies and gene constraint metrics (pLI/LOEUF) in population data.", path: "plugins/science/skills/gnomad_database/SKILL.md" },
+    { name: "gtex-database", category: "bio", desc: "Retrieves tissue-specific quantitative RNA expression levels and expression quantitative trait loci (eQTLs).", path: "plugins/science/skills/gtex_database/SKILL.md" },
+    { name: "human-protein-atlas-database", category: "bio", desc: "Extracts spatial protein expression levels across tissues and sub-cellular compartments from HPA.", path: "plugins/science/skills/human_protein_atlas_database/SKILL.md" },
+    { name: "interpro-database", category: "bio", desc: "Identifies domains, signatures, and families combining 14 databases (CDD, Pfam, etc.).", path: "plugins/science/skills/interpro_database/SKILL.md" },
+    { name: "jaspar-database", category: "bio", desc: "Retrieves Transcription Factor binding profiles, PFMs, and PWMs.", path: "plugins/science/skills/jaspar_database/SKILL.md" },
+    { name: "ncbi-sequence-fetch", category: "bio", desc: "Downloads genomic or protein fasta files directly from NCBI database accessions.", path: "plugins/science/skills/ncbi_sequence_fetch/SKILL.md" },
+    { name: "openfda-database", category: "bio", desc: "Integrates FDA adverse events, product labeling, recalls, and shortages.", path: "plugins/science/skills/openfda_database/SKILL.md" },
+    { name: "opentargets-database", category: "bio", desc: "Facilitates target-disease association scores and therapeutic tractability evaluation.", path: "plugins/science/skills/opentargets_database/SKILL.md" },
+    { name: "pdb-database", category: "bio", desc: "Queries Protein Data Bank (PDB) for experimentally-determined 3D biomolecular structures.", path: "plugins/science/skills/pdb_database/SKILL.md" },
+    { name: "protein-sequence-msa", category: "bio", desc: "Runs Clustal Omega to align multiple protein sequences for homology analysis.", path: "plugins/science/skills/protein_sequence_msa/SKILL.md" },
+    { name: "protein-sequence-similarity-search", category: "bio", desc: "Performs MMseqs2 or BLAST similarity searches for homologous proteins.", path: "plugins/science/skills/protein_sequence_similarity_search/SKILL.md" },
+    { name: "pubchem-database", category: "bio", desc: "Searches PubChem for chemical compounds, SMILES, physical properties, and bioassays.", path: "plugins/science/skills/pubchem_database/SKILL.md" },
+    { name: "pymol", category: "bio", desc: "Automates PyMOL scripting for structure alignment, distance measurements, and rendering.", path: "plugins/science/skills/pymol/SKILL.md" },
+    { name: "quickgo-database", category: "bio", desc: "Maps annotations between genes and molecular functions/cellular components (GO).", path: "plugins/science/skills/quickgo_database/SKILL.md" },
+    { name: "reactome-database", category: "bio", desc: "Searches human metabolic and signaling pathways, supporting gene enrichment analysis.", path: "plugins/science/skills/reactome_database/SKILL.md" },
+    { name: "string-database", category: "bio", desc: "Queries protein-protein interaction (PPI) networks, physical interactions, and functional enrichments.", path: "plugins/science/skills/string_database/SKILL.md" },
+    { name: "ucsc-conservation-and-tfbs", category: "bio", desc: "Fetches phyloP/phastCons evolutionary conservation scores and transcription factor binding site tracks.", path: "plugins/science/skills/ucsc_conservation_and_tfbs/SKILL.md" },
+    { name: "unibind-database", category: "bio", desc: "Queries experimentally validated direct TF-DNA interaction locations.", path: "plugins/science/skills/unibind_database/SKILL.md" },
+    { name: "uniprot-database", category: "bio", desc: "Retrieves protein sequence metadata, functional annotations, taxonomy, and literature links.", path: "plugins/science/skills/uniprot_database/SKILL.md" },
+
+    // Literature Search
+    { name: "literature-search-arxiv", category: "literature", desc: "Queries arXiv, retrieving abstracts and downloading full-text preprints.", path: "plugins/science/skills/literature_search_arxiv/SKILL.md" },
+    { name: "literature-search-biorxiv", category: "literature", desc: "Searches bioRxiv and medRxiv preprint databases.", path: "plugins/science/skills/literature_search_biorxiv/SKILL.md" },
+    { name: "literature-search-europepmc", category: "literature", desc: "Queries Europe PMC for citations, references, and open-access full-text XML.", path: "plugins/science/skills/literature_search_europepmc/SKILL.md" },
+    { name: "literature-search-openalex", category: "literature", desc: "Retrieves works, author h-index, institution metrics, and resolves DOIs.", path: "plugins/science/skills/literature_search_openalex/SKILL.md" },
+    { name: "pubmed-database", category: "literature", desc: "Searches MEDLINE/PubMed, matching raw citations and linking papers to biological entities.", path: "plugins/science/skills/pubmed_database/SKILL.md" },
+
+    // Media
+    { name: "use-ho-cloned_voice", category: "media", desc: "Generates audio speech files using the cloned voice of 'Ho Sze-chi' (何思齊) via VoxCPM2 model.", path: "skills/use-ho-cloned_voice/SKILL.md" },
+    { name: "voxcpm2-voice-cloner", category: "media", desc: "Custom voice cloning, conversation scenario script generation, and recording manager.", path: "skills/voxcpm2-voice-cloner/SKILL.md" },
+    { name: "video-audio-downloader", category: "media", desc: "Downloads YouTube subtitles (preferring zh-TW) and reformats them into structured Markdown.", path: "skills/video-audio-downloader/SKILL.md" },
+    { name: "draw-free", category: "media", desc: "Free AI image generator using Pollinations.ai (requires no API keys or GPU).", path: "skills/draw-free/SKILL.md" },
+
+    // System
+    { name: "antigravity-guide", category: "system", desc: "Provides a comprehensive guide, sitemap, CLI reference (agy), IDE reference, app 2.0 specs, and Python SDK documentation.", path: "builtin/skills/antigravity_guide/SKILL.md" },
+    { name: "android-cli", category: "system", desc: "Runs Android SDK diagnostics, configures emulation, and deploys builds.", path: "plugins/android-cli-plugin/skills/SKILL.md" },
+    { name: "uv", category: "system", desc: "Verifies or installs the high-performance Python package installer uv.", path: "plugins/science/skills/uv/SKILL.md" },
+    { name: "credentials", category: "system", desc: "Safe credential handling procedures to check for API keys.", path: "plugins/science/skills/credentials/SKILL.md" },
+    { name: "workflow-skill-creator", category: "system", desc: "Distills a completed multi-step chat interaction or workflow into a reusable Antigravity skill template.", path: "plugins/science/skills/workflow_skill_creator/SKILL.md" },
+    { name: "predictingthepast", category: "system", desc: "Implements Aeneas (Latin) and Ithaca (Ancient Greek) models to restore, date, and attribute ancient epigraphic texts.", path: "plugins/science/skills/predictingthepast/SKILL.md" },
+    { name: "science-skills-common", category: "system", desc: "Shared HTTP library with rate limits and exponential backoffs.", path: "plugins/science/skills/science_skills_common/SKILL.md" },
+    { name: "scienceskillscommon", category: "system", desc: "Shared HTTP library alias module.", path: "plugins/science/skills/scienceskillscommon/SKILL.md" }
+];
+
+function renderSkills(filteredSkills) {
+    const container = document.getElementById('skills-grid');
+    container.innerHTML = '';
+    
+    filteredSkills.forEach(skill => {
+        const card = document.createElement('div');
+        card.className = 'skill-card';
+        card.innerHTML = `
+            <div class="card-header">
+                <div class="card-category">${skill.category}</div>
+                <div class="card-title">${skill.name}</div>
+            </div>
+            <div class="card-desc">${skill.desc}</div>
+            <div class="card-path">
+                <span>${skill.path}</span>
+                <button class="copy-btn" onclick="copyPath('${skill.path}')">Copy</button>
+            </div>
+        `;
+        container.appendChild(card);
+    });
+
+    document.getElementById('skill-count').textContent = filteredSkills.length;
+}
+
+function copyPath(text) {
+    navigator.clipboard.writeText(text);
+    alert('Path copied to clipboard!');
+}
+
+document.getElementById('search-input').addEventListener('input', (e) => {
+    const query = e.target.value.toLowerCase();
+    const filtered = skillsData.filter(s => 
+        s.name.toLowerCase().includes(query) || 
+        s.desc.toLowerCase().includes(query) ||
+        s.category.toLowerCase().includes(query) ||
+        s.path.toLowerCase().includes(query)
+    );
+    renderSkills(filtered);
+});
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const cat = btn.getAttribute('data-category');
+        if (cat === 'all') {
+            renderSkills(skillsData);
+        } else {
+            renderSkills(skillsData.filter(s => s.category === cat));
+        }
+    });
+});
+
+function switchTab(tabId) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-header-btn').forEach(b => b.classList.remove('active'));
+    
+    document.getElementById(tabId).classList.add('active');
+    event.target.classList.add('active');
+}
+
+// Initial render
+renderSkills(skillsData);
+</script>
+
+</body>
+</html>
