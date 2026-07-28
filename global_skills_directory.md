@@ -35,6 +35,7 @@ These tools automate spreadsheet operations, mechanical drawing parsing, and dis
 *   **[excel-workhour-sync](file:///C:/Users/User/.gemini/config/skills/excel-workhour-sync/SKILL.md)**: Synchronizes work hours across monthly files, clearing retired entries and repairing broken formulas.
 *   **[excel-defect-tracker-updater](file:///C:/Users/User/.gemini/config/skills/excel-defect-tracker-updater/SKILL.md)**: Clears and populates QA defect tracking Excel sheets. Automatically analyzes defect photos, determines correct orientation, resizes images to fit cell heights, copies formatting styles, and fills finding details.
 *   **[process-fmea-generator](file:///C:/Users/User/.gemini/config/skills/process-fmea-generator/SKILL.md)**: Parses SOP Word docs and PQP Excel workbooks, matching assembly/inspection steps and populating Process FMEA (PFMEA) sheets with SEV, OCC, DET, and RPN formulas.
+*   **[pdf-translate-reconstruct](file:///C:/Users/User/.gemini/config/skills/pdf-translate-reconstruct/SKILL.md)**: Extracts text blocks and images from PDF manuals, enables page-by-page translation to Traditional Chinese, and reconstructs formatted Word (`.docx`) and PDF (`.pdf`) documents.
 
 ---
 

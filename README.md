@@ -11,6 +11,7 @@ By reading this repository, other Agents can understand the available tools, par
 *   **[yaml_image_deck_breakdown.md](yaml_image_deck_breakdown.md)**: A case study of the `yaml-image-deck` skill, illustrating skill layout, schema, prompting, and validation rules.
 *   **[process_fmea_generator_breakdown.md](process_fmea_generator_breakdown.md)**: Agent-to-Agent standard operating procedure for parsing SOP `.docx` documents, Control Plan sheets, and auto-generating AIAG/VDA compliant Process FMEA (`.xlsm`) workbooks.
 *   **[drawing_spec_pqp_comparison_breakdown.md](drawing_spec_pqp_comparison_breakdown.md)**: Agent-to-Agent operational guide for auditing PQP workbooks against mechanical drawing PDFs (metadata, torques, 100% dimensional Sample# completeness, and multi-drawing part numbers).
+*   **[pdf_translate_reconstruct_breakdown.md](pdf_translate_reconstruct_breakdown.md)**: SOP for extracting PDF text and images, page-by-page translation to Traditional Chinese, and reconstructing Word (`.docx`) and PDF (`.pdf`) manuals.
 *   **[notebooklm_workflows.md](notebooklm_workflows.md)**: Step-by-step instructions for executing NotebookLM-style tasks (visual slides, AI podcasts, interactive study guides, and video transcripts).
 
 ---
